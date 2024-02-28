@@ -88,8 +88,14 @@ class IterableDialogList(_DialogList):
             else:
                 event.app.exit(result=self.current_value)
 
+        @kb.add("A")
+        async def _all(event: E) -> None:
+            if self.multiple_selection:
+                self.current_values = [x[0] async for x in values]
+            event.app.exit(result=self.current_values)
+
         @kb.add(" ")
-        def _enter(event: E) -> None:
+        def _space(event: E) -> None:
             self._handle_enter()
 
         # Control and window.

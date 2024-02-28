@@ -222,7 +222,7 @@ def download(from_, config, delete_on_success, proxy, split_files, interactive):
         from_ = async_to_sync(interactive_select_dialog(client))
     if interactive:
         click.echo('Select all files to download:')
-        click.echo('[SPACE] Select files [ENTER] Download selected files')
+        click.echo('[SPACE] Select files [ENTER] Download selected files [A] to Download all files')
         messages = async_to_sync(interactive_select_files(client, from_))
     else:
         messages = client.find_files(from_)
